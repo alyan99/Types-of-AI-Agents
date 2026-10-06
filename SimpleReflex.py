@@ -1,3 +1,4 @@
+import random
 class enviroment:
     def __init__(self,initialState):
         self.state=initialState
@@ -14,10 +15,11 @@ class SimpleReflex:
         else:
             print("State is dirty\n")
 def RunAgent(agent,env,steps):
+    num=random.randint(1,steps)
     for step in range (steps):
         CurrState=env.getState()
         agent.Check(CurrState)
-        if(CurrState=="Dirty"):
+        if(CurrState=="Dirty" and step==num):
             env.setClean()
             print("State cleaned on step ",step+1)
 env=enviroment("Dirty")
